@@ -88,11 +88,15 @@ class CoffeeMachine:
 
     def __init__(self):
         choose_action_state = ChoosingActionState(self)
+        choose_coffee_state = ChoosingCoffeeState(self)
+        filling_water_state = FillingWaterState(self)
+        filling_milk_state = FillingMilkState(self)
+        filling_beans_state = FillingBeansState(self)
+        filling_cups_state = FillingCupsState(self)
         self.current_state = choose_action_state
         self.available_states = {
-            i.name: i for i in
-            [choose_action_state, ChoosingCoffeeState(self), FillingWaterState(self), FillingMilkState(self),
-             FillingBeansState(self), FillingCupsState(self)]
+            i.name: i for i in [choose_action_state, choose_coffee_state, filling_water_state, filling_milk_state,
+                                filling_beans_state, filling_cups_state]
         }
 
     def start(self):
